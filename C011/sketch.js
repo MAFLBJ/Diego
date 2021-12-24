@@ -1,12 +1,12 @@
 // definir variáveis:
 var dino, dinoImg, dinoAnima;
-var chao, chaoing;
+var chao, chaoimg, chaoinv;
 
 // carregar imagens:
 function preload() {
   dinoImg = loadImage("trex1.png");
   dinoAnima = loadAnimation("trex1.png", "trex3.png", "trex4.png");
-  chaoing = loadImage("ground2.png");
+  chaoimg = loadImage("ground2.png");
   
  
 }
@@ -20,8 +20,11 @@ function setup() {
   dino.scale = 0.6;
 
   chao = createSprite(120, 190, 150, 20);
-  chao.addImage(chaoing);
+  chao.addImage(chaoimg);
+  chao.velocityX = -4;
 
+  chaoinv = createSprite(120, 198, 150, 4);
+  chaoinv.visible = false;
 }
 
 // Desenhar os personagens:
@@ -33,7 +36,11 @@ function draw() {
     dino.velocityY = -10; 
   }
   dino.velocityY = dino.velocityY + 0.8;
-  //dino.collide(chao);
+  dino.collide(chaoinv );
+  console.log(chao.x);
+  if (chao.x <= 0){
+    chao.x = chao.width/2;
+  }
 
   drawSprites();
 }
