@@ -32,15 +32,15 @@ function draw() {
   background("white");
   textSize(20);
   text(mouseX+","+mouseY, mouseX, mouseY);
-  if(keyDown("space")){
+  if(keyDown("space") &&dino.y>= 167.8 ){
     dino.velocityY = -10; 
   }
   dino.velocityY = dino.velocityY + 0.8;
   dino.collide(chaoinv );
-  console.log(chao.x);
+  console.log(dino.y);
   if (chao.x <= 0){
     chao.x = chao.width/2;
-  }
+  }     
 
   drawSprites();
 }
